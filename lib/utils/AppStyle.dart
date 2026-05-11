@@ -7,11 +7,11 @@ class AppStyle {
   static const TextStyle bold20Black = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.bold,
-    color: Colors.black,
+    color: AppColor.blackColor,
   );
   static const TextStyle bold14gray = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.bold,
-    color: Color(0xff686868),
+    color: AppColor.secTextColorLight,
   );
 }

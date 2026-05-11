@@ -26,4 +26,5 @@ class AppColor {
 
   //ridColor
   static const Color ridColor=Color(0xffFF3232);
+  static const Color blackColor=Colors.black;
 }
