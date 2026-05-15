@@ -27,6 +27,7 @@
   "signup": "Signup",
   "login": "Login",
   "or": "Or",
-  "forgetPassword": "Forget Password"
+  "forgetPassword": "Forget Password",
+  "welcomeBack": "Welcome Back ✨"
 
 }

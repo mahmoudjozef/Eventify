@@ -13,28 +13,23 @@ class OrWidget extends StatelessWidget {
     var themeProvider = Provider.of<ThemeProvider>(context);
 
     Color dividerColor = themeProvider.isLightMode()
-        ? AppColor.mainColorLight
-        : AppColor.mainColorDark;
+        ? AppColor.strokeColorLight
+        : AppColor.strokeColorDark;
 
     return Row(
       children: [
-
         Expanded(
           child: Divider(
             thickness: 2,
             color: dividerColor,
           ),
         ),
-
-        const SizedBox(width: 8),
-
+         SizedBox(width: 8),
         Text(
           AppLocalizations.of(context)!.or,
           style: TextStyle(color: themeProvider.isLightMode()?AppColor.mainColorLight:AppColor.mainColorDark),
         ),
-
-        const SizedBox(width: 8),
-
+         SizedBox(width: 8),
         Expanded(
           child: Divider(
             thickness: 2,

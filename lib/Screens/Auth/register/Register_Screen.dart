@@ -5,13 +5,11 @@ import 'package:eventify/Screens/Widgets/TextFieldCustom.dart';
 import 'package:eventify/l10n/app_localizations.dart';
 import 'package:eventify/providers/theme_provider.dart';
 import 'package:eventify/utils/AppAssets.dart';
-import 'package:eventify/utils/AppRouts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
-
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen ({super.key});
   //height 812
   //width 375
   @override
@@ -35,7 +33,7 @@ class LoginScreen extends StatelessWidget {
           children: [
             SizedBox(height: height * 0.04),
             Text(
-              AppLocalizations.of(context)!.loginToYourAccount,
+              'Create your account',
               style: Theme.of(context).textTheme.titleLarge,
             ),
             SizedBox(height: height * 0.02),
@@ -45,34 +43,32 @@ class LoginScreen extends StatelessWidget {
             ),
             SizedBox(height: height * 0.01),
             TextFieldCustom(
+              prefixIcon: Icons.person,
+              hintText: AppLocalizations.of(context)!.enterYourName,
+            ),
+            SizedBox(height: height * 0.01),
+            TextFieldCustom(
               prefixIcon: Icons.lock,
               suffix: Icons.visibility,
               hintText: AppLocalizations.of(context)!.enterYourPassword,
             ),
             SizedBox(height: height * 0.01),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    AppLocalizations.of(context)!.forgetPassword,
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                ),
-              ],
+            TextFieldCustom(
+              prefixIcon: Icons.lock,
+              suffix: Icons.visibility,
+              hintText: AppLocalizations.of(context)!.enterYourPassword,
             ),
-            SizedBox(height: height * 0.01),
+            SizedBox(height: height * 0.02),
             ElevatedButtonCustom(
-              text: AppLocalizations.of(context)!.login,
-              onPressed: () {Navigator.pushNamed(context, AppRouts.routeNamedHomeScreen);},
+              text: AppLocalizations.of(context)!.signup,
+              onPressed: () {},
             ),
             SizedBox(height: height * 0.03),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  AppLocalizations.of(context)!.dontHaveAnAccount,
+                  AppLocalizations.of(context)!.alreadyHaveAnAccount,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
                 TextButton(

@@ -89,4 +89,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get or => 'أو';
+
+  @override
+  String get welcomeBack => '✨مرحب بك';
 }

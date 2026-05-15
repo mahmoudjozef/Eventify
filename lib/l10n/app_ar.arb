@@ -27,5 +27,6 @@
   "signup": "إنشاء حساب",
   "login": "تسجيل الدخول",
   "or": "أو",
-  "forgetPassword": "نسيت كلمة المرور"
+  "forgetPassword": "نسيت كلمة المرور",
+"welcomeBack": "✨مرحب بك"
 }

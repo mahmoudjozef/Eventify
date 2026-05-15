@@ -24,7 +24,6 @@ class AppTheme {
   );
   static final ThemeData darkMode = ThemeData(
     appBarTheme: AppBarTheme(backgroundColor: AppColor.BGDarkMode,),
-
     scaffoldBackgroundColor: AppColor.BGDarkMode,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColor.BGDarkMode,
@@ -39,7 +38,6 @@ class AppTheme {
       labelMedium: AppStyle.medium18White,
       bodySmall: AppStyle.small14mainDark,
       bodyMedium: AppStyle.medium18mainDark,
-
 
     ),
   );

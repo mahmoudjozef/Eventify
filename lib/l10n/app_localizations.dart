@@ -253,6 +253,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Or'**
   String get or;
+
+  /// No description provided for @welcomeBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome Back ✨'**
+  String get welcomeBack;
 }
 
 class _AppLocalizationsDelegate
