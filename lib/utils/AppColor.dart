@@ -16,7 +16,8 @@ class AppColor {
 
 
   //dark mode color
-  static const Color backGroundColorDark=Color(0xff000F30);
+  static const Color backGroundColorDark=Color(0xffF4F7FF);
+  static const Color BGDarkMode=Color(0xff000F30);
   static const Color mainColorDark=Color(0xff457AED);
   static const Color disableColorDark=Color(0xffB9B9B9);
   static const Color mainTextColorDark=Color(0xffFFFFFF);
@@ -27,4 +28,6 @@ class AppColor {
   //ridColor
   static const Color ridColor=Color(0xffFF3232);
   static const Color blackColor=Colors.black;
+  static const Color whiteColor=Colors.white;
+  static const Color greyColor=Colors.grey;
 }

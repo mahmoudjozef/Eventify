@@ -13,17 +13,17 @@ class AppAssets {
   static const String exhibitionDark = "assets/images/events/ExhibitionDark.png";
   static const String meetingDark = "assets/images/events/MeetingDark.png";
 //onboarding images light
-  static const String onboardingLight = "assets/images/OnBording/being-creative.png";
-  static const String onboardingLight2 = "assets/images/OnBording/illusration 2.png";
-  static const String onboardingLight3 = "assets/images/OnBording/illustraion4.png";
-  static const String onboardingLight4 = "assets/images/OnBording/illustration3.png";
+  static const String onboardingLight = "assets/images/OnBoarding/Onboarding Light.png";
+  static const String onboardingLight2 = "assets/images/OnBoarding/Onboarding Light-1.png";
+  static const String onboardingLight3 = "assets/images/OnBoarding/Onboarding Light-2.png";
+  static const String onboardingLight4 = "assets/images/OnBoarding/Onboarding Light-3.png";
 
 
 //onboarding images dark
-  static const String onboardingDark = "assets/images/OnBording/being-creativedark.png";
-  static const String onboardingDark2 = "assets/images/OnBording/illusrationdark2.png";
-  static const String onboardingDark3 = "assets/images/OnBording/illustrationdark3.png";
-  static const String onboardingDark4 = "assets/images/OnBording/illustraiondark4.png";
+  static const String onboardingDark = "assets/images/OnBoarding/Onboarding Dark.png";
+  static const String onboardingDark2 = "assets/images/OnBoarding/Onboarding Dark-1.png";
+  static const String onboardingDark3 = "assets/images/OnBoarding/Onboarding Dark-2.png";
+  static const String onboardingDark4 = "assets/images/OnBoarding/Onboarding Dark-3.png";
 
 
   //---------------
@@ -35,7 +35,11 @@ class AppAssets {
   static const String avatarProfile = "assets/images/user.png";
 
   //logos&icons
-  static const String mainLogo = "assets/images/Evently.png";
-  static const String mainLogoDark = "assets/images/EventlyDark.png";
+  static const String SplashLogo = "assets/images/EventlySplash.png";
+  static const String SplashLogoDark = "assets/images/EventlySplashDark.png";
+  static const String evntlylight = "assets/images/EventlyOnBoarding.png";
+  static const String evntlyDark = "assets/images/EventlyOnBoardingDark.png";
   static const String googleIcon = "assets/images/icons/GoogleLogin.png";
+  static const String sunIcon = "assets/images/icons/GoogleLogin.png";
+  static const String moonIcon = "assets/images/icons/GoogleLogin.png";
 }

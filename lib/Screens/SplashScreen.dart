@@ -28,8 +28,8 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Image.asset(
           themeProvider.isLightMode()
-              ? AppAssets.mainLogo
-              : AppAssets.mainLogoDark,
+              ? AppAssets.SplashLogo
+              : AppAssets.SplashLogoDark,
           fit: BoxFit.cover,
         ),
       ),

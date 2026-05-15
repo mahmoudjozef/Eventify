@@ -11,4 +11,7 @@ class ThemeProvider extends ChangeNotifier{
   bool isLightMode() {
     return appTheme==ThemeMode.light;
   }
+  bool isDarkMode() {
+    return appTheme == ThemeMode.dark;
+  }
 }
