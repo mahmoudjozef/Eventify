@@ -11,6 +11,9 @@ class AppTheme {
       selectedItemColor: AppColor.mainColorLight,
       unselectedItemColor: AppColor.disableColorLight,
     ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: AppColor.mainColorLight,
+    ),
     textTheme: TextTheme(
       titleSmall:  AppStyle.small16Black,
       titleMedium: AppStyle.bold20Black,
@@ -29,6 +32,9 @@ class AppTheme {
       backgroundColor: AppColor.BGDarkMode,
       selectedItemColor: AppColor.mainColorDark,
       unselectedItemColor: AppColor.disableColorDark,
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: AppColor.mainColorDark,
     ),
     textTheme: TextTheme(
       titleSmall:  AppStyle.small16White,

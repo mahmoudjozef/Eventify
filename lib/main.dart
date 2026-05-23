@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:eventify/Screens/Auth/Forget%20password/forget_screen.dart';
 import 'package:eventify/Screens/Auth/Login/login_screen.dart';
 import 'package:eventify/Screens/Auth/register/Register_Screen.dart';
+import 'package:eventify/Screens/home/pages/AddEvent/AddEventScreen.dart';
 import 'package:eventify/Screens/onBording/on_Boarding4.dart';
 import 'package:eventify/Screens/onBording/on_boarding3.dart';
 import 'package:eventify/Screens/onBording/on_bording1.dart';
@@ -17,7 +18,6 @@ import 'Screens/SplashScreen.dart';
 import 'Screens/home/homeScreen.dart';
 
 void main() {
-
   runApp(
       MultiProvider(
       providers: [
@@ -30,7 +30,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     var themeProvider = Provider.of<ThemeProvider>(context);
@@ -54,6 +53,7 @@ class MyApp extends StatelessWidget {
         AppRouts.routeNamedRegisterScreen: (context) => RegisterScreen(),
         AppRouts.routeNamedForgetScreen: (context) => ForgetScreen(),
         AppRouts.routeNamedHomeScreen: (context) => HomeScreen(),
+        AppRouts.routeNamedAddEventScreen: (context) => AddEventScreen(),
       },
     );
   }

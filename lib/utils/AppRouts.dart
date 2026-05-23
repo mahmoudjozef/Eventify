@@ -9,6 +9,6 @@ class AppRouts {
   static const String routeNamedLoginScreen = 'LoginScreen';
   static const String routeNamedRegisterScreen = 'RegisterScreen';
   static const String routeNamedForgetScreen = 'RegisterScreen';
-  static const String routeNamedAddEventScreen = 'AddEventScreen';
+  static const String routeNamedAddEventScreen = 'AddEvent';
   static const String routeNamedAnimationScreen = 'AnimationScreen';
 }

@@ -1,4 +1,5 @@
 import 'package:eventify/Screens/home/pages/homePage/widget/ChipsWidget.dart';
+import 'package:eventify/Screens/home/pages/homePage/widget/EventItem.dart';
 import 'package:eventify/Screens/home/pages/homePage/widget/LanguageButtonWidget.dart';
 import 'package:eventify/l10n/app_localizations.dart';
 import 'package:eventify/providers/theme_provider.dart';
@@ -6,11 +7,29 @@ import 'package:eventify/utils/AppColor.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+   HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+List<String> evetsName = [];
+
+int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    evetsName = [
+      AppLocalizations.of(context)!.all,
+      AppLocalizations.of(context)!.sport,
+      AppLocalizations.of(context)!.birthday,
+      AppLocalizations.of(context)!.meeting,
+      AppLocalizations.of(context)!.workShop,
+      AppLocalizations.of(context)!.bookClub,
+      AppLocalizations.of(context)!.exhibition,
+    ];
     var themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       body: Padding(
@@ -50,7 +69,18 @@ class HomePage extends StatelessWidget {
                   LanguageButtonWidget(),
                 ],
               ),
-              ChipsWidget()
+              SizedBox(height: 10),
+              ChipsWidget(
+                  eventName: evetsName,
+                selectedIndex: selectedIndex,
+                 onTap: (index) {
+                   selectedIndex = index;
+                   setState(() {
+
+                   });
+                 },
+              ),
+              EventItem()
             ],
           ),
         ),

@@ -8,17 +8,20 @@ class TextFieldCustom extends StatelessWidget {
     super.key,
     this.prefixIcon,
     this.suffix,
+    this.maxLine,
     required this.hintText,
   });
 
   IconData? prefixIcon;
   IconData? suffix;
   String hintText;
+  int? maxLine;
 
   @override
   Widget build(BuildContext context) {
     var themeProvider = Provider.of<ThemeProvider>(context);
     return TextFormField(
+      maxLines: maxLine,
       decoration: InputDecoration(
         filled: true,
         fillColor: themeProvider.isLightMode()

@@ -1,6 +1,7 @@
 import 'package:eventify/Screens/home/pages/FavoritePages/favoritePage.dart';
 import 'package:eventify/Screens/home/pages/ProfilePages/profilePage.dart';
 import 'package:eventify/Screens/home/pages/homePage/home_page.dart';
+import 'package:eventify/utils/AppRouts.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -48,6 +49,10 @@ class _HomeScreenState extends State<HomeScreen> {
             index: 2,
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {Navigator.pushNamed(context, AppRouts.routeNamedAddEventScreen);},
+        child: Icon(Icons.add,color: Colors.white),
       ),
       body: screens[selectedIndex],
     );

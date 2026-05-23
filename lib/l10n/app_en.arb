@@ -28,6 +28,13 @@
   "login": "Login",
   "or": "Or",
   "forgetPassword": "Forget Password",
-  "welcomeBack": "Welcome Back ✨"
+  "welcomeBack": "Welcome Back ✨",
+  "all": "All",
+  "sport": "Sport",
+  "birthday": "BirthDay",
+  "meeting": "Meeting",
+  "workShop": "WorkShop",
+  "bookClub": "BookClub",
+  "exhibition": "Exhibition"
 
 }
