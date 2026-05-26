@@ -9,6 +9,8 @@ class TextFieldCustom extends StatelessWidget {
     this.prefixIcon,
     this.suffix,
     this.maxLine,
+    this.validator,
+    this.onChanged,
     required this.hintText,
   });
 
@@ -16,11 +18,16 @@ class TextFieldCustom extends StatelessWidget {
   IconData? suffix;
   String hintText;
   int? maxLine;
+  String? Function(String?)? validator;
+  String? Function(String?)? onChanged;
+
 
   @override
   Widget build(BuildContext context) {
     var themeProvider = Provider.of<ThemeProvider>(context);
     return TextFormField(
+      onChanged:onChanged ,
+      validator: validator,
       maxLines: maxLine,
       decoration: InputDecoration(
         filled: true,

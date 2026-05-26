@@ -24,4 +24,12 @@ class FireBaseUtils {
   static Stream<QuerySnapshot<EventModel>>getEventsStream(){
     return getEventCollection().snapshots();
   }
+  //todo: Update Data
+  static updateEvent(EventModel event) {
+    getEventCollection().doc(event.id).update(event.toJson());
+  }
+  //todo: Delete Data
+  static deleteEvent(String id) {
+    getEventCollection().doc(id).delete();
+  }
 }

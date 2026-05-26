@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class EventModel {
   //key
   static const String collectionName = 'Events';
@@ -46,7 +48,8 @@ EventModel.toObject(Map<String,dynamic>data):this(
   eventName: data['eventName'],
   eventTitle: data['eventTitle'],
   eventDescription: data['eventDescription'],
-  eventDate: data['eventDate'],
+  eventDate:
+  (data['eventDate'] as Timestamp).toDate(),
   eventTime: data['eventTime'],
 
 );

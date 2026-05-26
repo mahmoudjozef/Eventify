@@ -4,20 +4,22 @@ import 'package:eventify/Screens/home/pages/homePage/widget/LanguageButtonWidget
 import 'package:eventify/l10n/app_localizations.dart';
 import 'package:eventify/providers/theme_provider.dart';
 import 'package:eventify/utils/AppColor.dart';
+import 'package:eventify/utils/AppRouts.dart';
+import 'package:eventify/utils/FireBaseUtils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
-   HomePage({super.key});
+  HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-List<String> evetsName = [];
+  List<String> evetsName = [];
 
-int selectedIndex = 0;
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -71,16 +73,40 @@ int selectedIndex = 0;
               ),
               SizedBox(height: 10),
               ChipsWidget(
-                  eventName: evetsName,
+                eventName: evetsName,
                 selectedIndex: selectedIndex,
-                 onTap: (index) {
-                   selectedIndex = index;
-                   setState(() {
-
-                   });
-                 },
+                onTap: (index) {
+                  selectedIndex = index;
+                  setState(() {});
+                },
               ),
-              EventItem()
+              Expanded(
+                child: StreamBuilder(
+                  stream: FireBaseUtils.getEventsStream(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData||snapshot.data!.docs.isEmpty) {
+                      return Center(child:Text('no data'));
+                    }
+                    var events = snapshot.data!.docs.map((e) {
+                      return e.data();
+                    }).toList();
+                    if(selectedIndex!=0){
+                      events=events.where((element) => element.eventName==evetsName[selectedIndex]).toList();
+                    }
+                    return ListView.separated(
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(context, AppRouts.routeNamedAddEventDetailsScreen,arguments: events[index]);
+                            },child: EventItem(event: events[index]));
+                      },
+                      separatorBuilder: (context, index) =>
+                          SizedBox(height: 10),
+                      itemCount: events.length,
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),

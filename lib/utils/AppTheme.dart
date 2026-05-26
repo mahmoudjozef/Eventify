@@ -1,10 +1,15 @@
+import 'package:eventify/providers/theme_provider.dart';
 import 'package:eventify/utils/AppStyle.dart';
 import 'package:flutter/material.dart';
 import 'AppColor.dart';
 
 class AppTheme {
+
   static final ThemeData lightMode = ThemeData(
-    appBarTheme: AppBarTheme(backgroundColor: AppColor.backGroundColorLight,),
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColor.backGroundColorLight,
+
+    ),
     scaffoldBackgroundColor: AppColor.backGroundColorLight,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColor.inputsColorLight,

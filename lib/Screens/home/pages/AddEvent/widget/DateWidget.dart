@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class DateWidget extends StatelessWidget {
-  const DateWidget({super.key});
-
+   DateWidget({super.key,required this.title,required this.onPressed});
+String title;
+VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     var theme = Provider.of<ThemeProvider>(context);
@@ -20,9 +21,7 @@ class DateWidget extends StatelessWidget {
         SizedBox(width: 5,),
         Text('Event Date'),
         Spacer(),
-        TextButton(onPressed: () {
-
-        }, child: Text('Choose date'))
+        TextButton(onPressed: onPressed, child: Text(title,style:Theme.of(context).textTheme.bodySmall))
       ],
     );
   }
