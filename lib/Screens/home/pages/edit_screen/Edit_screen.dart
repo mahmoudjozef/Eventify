@@ -21,11 +21,8 @@ class EditScreen extends StatefulWidget {
 }
 
 class _EditScreenState extends State<EditScreen> {
-
   int selectedIndex = 0;
-
   List<String> eventName = [];
-
   List<String> eventsImagesLight = [
     AppAssets.sportLight,
     AppAssets.birthDayLight,
@@ -35,13 +32,12 @@ class _EditScreenState extends State<EditScreen> {
   ];
 
   List<String> eventsImagesDark = [
-    AppAssets.sportLight,
-    AppAssets.birthDayLight,
-    AppAssets.meetingLight,
-    AppAssets.bookClubLight,
-    AppAssets.exhibitionLight,
+    AppAssets.sportDark,
+    AppAssets.birthDayDark,
+    AppAssets.meetingDark,
+    AppAssets.bookClubDark,
+    AppAssets.exhibitionDark,
   ];
-
   //Date
   DateTime? dateTime;
   String? formatDate;
@@ -54,16 +50,15 @@ class _EditScreenState extends State<EditScreen> {
   String? eventDescription;
 
   String eventImage = '';
+  String eventImageDark = '';
   String selectedEventName = '';
 
   late EventModel args;
 
-  final GlobalKey<FormState> _formKey =
-  GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-
     eventName = [
       AppLocalizations.of(context)!.sport,
       AppLocalizations.of(context)!.birthday,
@@ -72,28 +67,19 @@ class _EditScreenState extends State<EditScreen> {
       AppLocalizations.of(context)!.exhibition,
     ];
 
-    args = ModalRoute.of(context)!
-        .settings
-        .arguments as EventModel;
+    args = ModalRoute.of(context)!.settings.arguments as EventModel;
 
     if (selectedIndex == 0) {
-
-      selectedIndex =
-          eventName.indexOf(args.eventName);
+      selectedIndex = eventName.indexOf(args.eventName);
     }
 
-    var theme =
-    Provider.of<ThemeProvider>(context);
+    var theme = Provider.of<ThemeProvider>(context);
 
     return Scaffold(
-
       appBar: AppBar(
-
         title: Text(
           'Edit Event',
-          style: Theme.of(context)
-              .textTheme
-              .titleSmall,
+          style: Theme.of(context).textTheme.titleSmall,
         ),
 
         centerTitle: true,
@@ -106,123 +92,90 @@ class _EditScreenState extends State<EditScreen> {
       ),
 
       body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: 14,
-        ),
+        padding: EdgeInsets.symmetric(horizontal: 14),
 
         child: Form(
           key: _formKey,
 
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment:
-              CrossAxisAlignment.start,
-            
+              crossAxisAlignment: CrossAxisAlignment.start,
+
               spacing: 10,
-            
+
               children: [
-            
                 Image.asset(
-                  theme.isLightMode()
-                      ? eventsImagesLight[
-                  selectedIndex]
-                      : eventsImagesDark[
-                  selectedIndex],
+                  theme.isLightMode() ? args.eventImage : args.eventImageDark,
                 ),
-            
+
                 ChipsWidget(
                   eventName: eventName,
-            
+
                   selectedIndex: selectedIndex,
-            
+
                   onTap: (index) {
-            
                     selectedIndex = index;
-            
+
                     setState(() {});
                   },
                 ),
-            
-                Text(
-                  'Title',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleSmall,
-                ),
-            
+
+                Text('Title', style: Theme.of(context).textTheme.titleSmall),
+
                 TextFieldCustom(
-            
                   hintText: args.eventTitle,
-            
+
                   onChanged: (value) {
                     eventTitle = value;
                   },
-            
+
                   validator: (value) {
-            
-                    if (value == null ||
-                        value.trim().isEmpty) {
-            
-                      return
-                        'please enter the eventTitle';
+                    if (value == null || value.trim().isEmpty) {
+                      return 'please enter the eventTitle';
                     }
-            
+
                     return null;
                   },
                 ),
-            
+
                 Text(
                   'Description',
-            
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleSmall,
+
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
-            
+
                 TextFieldCustom(
-            
-                  hintText:
-                  args.eventDescription,
-            
+                  hintText: args.eventDescription,
+
                   maxLine: 5,
-            
+
                   onChanged: (value) {
                     eventDescription = value;
                   },
-            
+
                   validator: (value) {
-            
-                    if (value == null ||
-                        value.trim().isEmpty) {
-            
-                      return
-                        'please enter the eventDescription';
+                    if (value == null || value.trim().isEmpty) {
+                      return 'please enter the eventDescription';
                     }
-            
+
                     return null;
                   },
                 ),
-            
+
                 DateWidget(
-            
                   onPressed: chooseDate,
-            
+
                   title: dateTime == null
-                      ? DateFormat('MMM d')
-                      .format(
-                      args.eventDate)
+                      ? DateFormat('MMM d').format(args.eventDate)
                       : formatDate!,
                 ),
-            
+
                 TimeWidget(
-            
                   onPressed: chooseTime,
-            
-                  title: choosedTime == null
-                      ? args.eventTime
-                      : formatTime!,
+
+                  title: choosedTime == null ? args.eventTime : formatTime!,
                 ),
-            
+
                 ElevatedButtonCustom(
                   onPressed: updateEvent,
                   text: 'Update Event',
@@ -236,37 +189,26 @@ class _EditScreenState extends State<EditScreen> {
   }
 
   void chooseDate() async {
-
     var data = await showDatePicker(
-
       context: context,
 
       initialDate: DateTime.now(),
 
       firstDate: DateTime.now(),
 
-      lastDate: DateTime.now().add(
-        Duration(days: 365),
-      ),
+      lastDate: DateTime.now().add(Duration(days: 365)),
     );
 
     if (data != null) {
-
       setState(() {
-
         dateTime = data;
 
-        formatDate =
-            DateFormat('MMM d')
-                .format(dateTime!);
+        formatDate = DateFormat('MMM d').format(dateTime!);
       });
     }
   }
-
   void chooseTime() async {
-
     var time = await showTimePicker(
-
       context: context,
 
       initialTime: TimeOfDay.now(),
@@ -275,59 +217,33 @@ class _EditScreenState extends State<EditScreen> {
     choosedTime = time;
 
     if (time != null) {
-
       setState(() {
-
-        formatTime =
-            time.format(context);
+        formatTime = time.format(context);
       });
     }
   }
 
   void updateEvent() {
-
-    if (_formKey.currentState!
-        .validate()) {
-
-      eventImage =
-      Provider.of<ThemeProvider>(
-        context,
-        listen: false,
-      ).isLightMode()
-
-          ? eventsImagesLight[
-      selectedIndex]
-
-          : eventsImagesDark[
-      selectedIndex];
-
-      selectedEventName =
-      eventName[selectedIndex];
+    if (_formKey.currentState!.validate()) {
+      eventImage = eventsImagesLight[selectedIndex];
+      eventImageDark = eventsImagesDark[selectedIndex];
+      selectedEventName = eventName[selectedIndex];
 
       var event = EventModel(
-
         id: args.id,
 
         eventImage: eventImage,
+        eventImageDark: eventImageDark,
 
-        eventName:
-        selectedEventName,
+        eventName: selectedEventName,
 
-        eventTitle:
-        eventTitle ??
-            args.eventTitle,
+        eventTitle: eventTitle ?? args.eventTitle,
 
-        eventDescription:
-        eventDescription ??
-            args.eventDescription,
+        eventDescription: eventDescription ?? args.eventDescription,
 
-        eventDate:
-        dateTime ??
-            args.eventDate,
+        eventDate: dateTime ?? args.eventDate,
 
-        eventTime:
-        formatTime ??
-            args.eventTime,
+        eventTime: formatTime ?? args.eventTime,
       );
 
       FireBaseUtils.updateEvent(event);

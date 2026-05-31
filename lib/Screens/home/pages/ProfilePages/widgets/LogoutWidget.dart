@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:eventify/utils/AppRouts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -37,6 +38,7 @@ class LogoutWidget extends StatelessWidget {
             ),),
             Spacer(),
             IconButton(onPressed: () {
+              Navigator.pushNamed(context, AppRouts.routeNamedLoginScreen);
             }, icon: Icon(Icons.login,color: AppColor.ridColor))
           ],
         ),

@@ -6,6 +6,7 @@ class EventModel {
   //data
   String id;
   String eventImage;
+  String eventImageDark;
   String eventName;
   String eventTitle;
   String eventDescription;
@@ -18,6 +19,7 @@ class EventModel {
     this.id = '',
     this.isFavorite = false,
     required this.eventImage,
+    required this.eventImageDark,
     required this.eventName,
     required this.eventTitle,
     required this.eventDescription,
@@ -32,6 +34,7 @@ Map<String,dynamic>toJson(){
     {
       'id':id,
       'eventImage':eventImage,
+      'eventImageDark':eventImageDark,
       'eventName':eventName,
       'eventTitle':eventTitle,
       'eventDescription':eventDescription,
@@ -44,13 +47,12 @@ Map<String,dynamic>toJson(){
 EventModel.toObject(Map<String,dynamic>data):this(
   id: data['id'],
   isFavorite: data['isFavorite'],
-  eventImage: data['eventImage'],
+  eventImage: data['eventImage']??'',
+  eventImageDark: data['eventImageDark']??'',
   eventName: data['eventName'],
   eventTitle: data['eventTitle'],
   eventDescription: data['eventDescription'],
-  eventDate:
-  (data['eventDate'] as Timestamp).toDate(),
+  eventDate: (data['eventDate'] as Timestamp).toDate(),
   eventTime: data['eventTime'],
-
 );
 }

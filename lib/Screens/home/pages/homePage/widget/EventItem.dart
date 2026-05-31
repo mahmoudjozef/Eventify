@@ -12,25 +12,9 @@ class EventItem extends StatelessWidget {
 
   EventItem({super.key, required this.event});
 
-  List<String> eventsImagesLight = [
-    AppAssets.sportLight,
-    AppAssets.birthDayLight,
-    AppAssets.bookClubLight,
-    AppAssets.exhibitionLight,
-    AppAssets.meetingLight,
-  ];
-  List<String> eventsImagesDark = [
-    AppAssets.sportDark,
-    AppAssets.birthDayDark,
-    AppAssets.bookClubDark,
-    AppAssets.exhibitionDark,
-    AppAssets.meetingDark,
-  ];
-
   @override
   Widget build(BuildContext context) {
     var themeProvider = Provider.of<ThemeProvider>(context);
-
     return Container(
       width: double.infinity,
       height: 200,
@@ -41,7 +25,13 @@ class EventItem extends StatelessWidget {
               ? AppColor.strokeColorLight
               : AppColor.strokeColorDark,
         ),
-        image: DecorationImage(image: AssetImage(event.eventImage)),
+        image: DecorationImage(
+          image: AssetImage(
+            themeProvider.isLightMode()
+                ? event.eventImage
+                : event.eventImageDark,
+          ),
+        ),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
@@ -52,6 +42,7 @@ class EventItem extends StatelessWidget {
             Container(
               width: 66,
               height: 40,
+              alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: themeProvider.isLightMode()
                     ? AppColor.backGroundColorLight
@@ -63,12 +54,9 @@ class EventItem extends StatelessWidget {
                       : AppColor.strokeColorDark,
                 ),
               ),
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 5),
-                child: Text(
-                  DateFormat('dd MMM').format(event.eventDate),
-                  textAlign: TextAlign.center,
-                ),
+              child: Text(
+                DateFormat('dd MMM').format(event.eventDate),style: Theme.of(context).textTheme.bodySmall,
+                textAlign: TextAlign.center,
               ),
             ),
 
@@ -87,16 +75,15 @@ class EventItem extends StatelessWidget {
                 ),
               ),
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 5),
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(event.eventTitle, textAlign: TextAlign.center),
+                    Text(event.eventTitle, textAlign: TextAlign.center,style: Theme.of(context).textTheme.titleSmall,),
 
                     IconButton(
                       onPressed: () {
-                        event.isFavorite =
-                        !event.isFavorite;
+                        event.isFavorite = !event.isFavorite;
 
                         FireBaseUtils.updateEvent(event);
                       },

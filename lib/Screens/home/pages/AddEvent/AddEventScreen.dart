@@ -30,15 +30,14 @@ class _AddEventScreenState extends State<AddEventScreen> {
     AppAssets.exhibitionLight,
   ];
   List<String> eventsImagesDark = [
-    AppAssets.sportLight,
-    AppAssets.birthDayLight,
-    AppAssets.meetingLight,
-    AppAssets.bookClubLight,
-    AppAssets.exhibitionLight,
+    AppAssets.sportDark,
+    AppAssets.birthDayDark,
+    AppAssets.meetingDark,
+    AppAssets.bookClubDark,
+    AppAssets.exhibitionDark,
   ];
   int selectedIndex = 0;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-ThemeProvider themeProvider = ThemeProvider();
   //Date
   DateTime? dateTime;
   String? formatDate;
@@ -49,6 +48,7 @@ ThemeProvider themeProvider = ThemeProvider();
   String? eventTitle;
   String? eventDescription;
   String eventImage = '';
+  String eventImageDark = '';
   String eventName = '';
 
   @override
@@ -81,7 +81,7 @@ ThemeProvider themeProvider = ThemeProvider();
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.asset(
-                  themeProvider.isLightMode()
+                themeProvider.isLightMode()
                       ? eventsImagesLight[selectedIndex]
                       : eventsImagesDark[selectedIndex],
                 ),
@@ -131,7 +131,7 @@ ThemeProvider themeProvider = ThemeProvider();
                   onPressed: chooseTime,
                   title: choosedTime == null ? 'Choose Time' : formatTime!,
                 ),
-                ElevatedButtonCustom(onPressed: addEvent, text: 'Add Event'),
+                ElevatedButtonCustom(onPressed: () => addEvent(themeProvider), text: 'Add Event'),
               ],
             ),
           ),
@@ -169,18 +169,15 @@ ThemeProvider themeProvider = ThemeProvider();
     }
   }
 
-  void addEvent() {
-
-    eventImage = themeProvider.isLightMode()
-        ? eventsImagesLight[selectedIndex]
-        : eventsImagesDark[selectedIndex];
-
+  void addEvent(ThemeProvider themeProvider) {
+    eventImage=eventsImagesLight[selectedIndex];
+    eventImageDark=eventsImagesDark[selectedIndex];
     eventName = evetsName[selectedIndex];
-
     if (_formKey.currentState!.validate()) {
 
       var event = EventModel(
         eventImage: eventImage,
+        eventImageDark: eventImageDark,
         eventName: eventName,
         eventTitle: eventTitle!,
         eventDescription: eventDescription!,

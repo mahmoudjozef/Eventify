@@ -20,7 +20,9 @@ class LoginScreen extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
+
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.transparent),
         title: Image.asset(
           themeProvider.isLightMode()
               ? AppAssets.evntlylight
@@ -54,7 +56,7 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {Navigator.pushNamed(context, AppRouts.routeNamedForgetScreen);},
                   child: Text(
                     AppLocalizations.of(context)!.forgetPassword,
                     style: Theme.of(context).textTheme.bodySmall,
@@ -76,9 +78,9 @@ class LoginScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {Navigator.pushNamed(context, AppRouts.routeNamedRegisterScreen);},
                   child: Text(
-                    AppLocalizations.of(context)!.login,
+                    AppLocalizations.of(context)!.signup,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ),

@@ -38,6 +38,7 @@ class _HomePageState extends State<HomePage> {
         padding: EdgeInsets.symmetric(horizontal: 14),
         child: SafeArea(
           child: Column(
+            spacing: 10,
             children: [
               Row(
                 children: [
@@ -57,7 +58,12 @@ class _HomePageState extends State<HomePage> {
                   Spacer(),
                   IconButton(
                     onPressed: () {
-                      themeProvider.changeTheme(ThemeMode.dark);
+                      if(themeProvider.appTheme==ThemeMode.light){
+                        themeProvider.changeTheme(ThemeMode.dark);
+                      }else{
+                        themeProvider.changeTheme(ThemeMode.light);
+                      }
+
                     },
                     icon: Icon(
                       themeProvider.isLightMode()
@@ -71,7 +77,6 @@ class _HomePageState extends State<HomePage> {
                   LanguageButtonWidget(),
                 ],
               ),
-              SizedBox(height: 10),
               ChipsWidget(
                 eventName: evetsName,
                 selectedIndex: selectedIndex,

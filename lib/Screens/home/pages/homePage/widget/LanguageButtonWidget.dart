@@ -15,7 +15,10 @@ class LanguageButtonWidget extends StatelessWidget {
     var currentL10n = l10n.currentLanguage;
     return InkWell(
       onTap: () {
-        l10n.changeLanguage('Ar');
+        if(l10n.currentLanguage=='en'){
+          l10n.changeLanguage('ar');
+        }else{l10n.changeLanguage('en');}
+
       },
       child: Container(
         width: 32,

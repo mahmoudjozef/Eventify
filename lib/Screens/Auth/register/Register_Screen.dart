@@ -5,6 +5,7 @@ import 'package:eventify/Screens/Widgets/TextFieldCustom.dart';
 import 'package:eventify/l10n/app_localizations.dart';
 import 'package:eventify/providers/theme_provider.dart';
 import 'package:eventify/utils/AppAssets.dart';
+import 'package:eventify/utils/AppRouts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -72,7 +73,7 @@ class RegisterScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {Navigator.pushNamed(context, AppRouts.routeNamedLoginScreen);},
                   child: Text(
                     AppLocalizations.of(context)!.login,
                     style: Theme.of(context).textTheme.bodySmall,

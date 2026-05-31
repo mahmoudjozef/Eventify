@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightMode,
       darkTheme: AppTheme.darkMode,
       themeMode: themeProvider.appTheme,
-      initialRoute: AppRouts.routeNamedHomeScreen,
+      initialRoute: AppRouts.routeNamedLoginScreen,
       routes: {
         AppRouts.routeNamedSplashScreen: (context) => SplashScreen(),
         AppRouts.routeNamedOnBoarding1Screen: (context) => Onboarding1(),

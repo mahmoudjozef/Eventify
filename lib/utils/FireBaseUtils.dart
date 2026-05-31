@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eventify/model/EventModel.dart';
 
 class FireBaseUtils {
+  ///fireBase FireStore
   //todo: readData
   static CollectionReference<EventModel> getEventCollection() {
     return FirebaseFirestore.instance
@@ -32,4 +33,5 @@ class FireBaseUtils {
   static deleteEvent(String id) {
     getEventCollection().doc(id).delete();
   }
+
 }

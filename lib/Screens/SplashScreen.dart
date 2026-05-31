@@ -1,4 +1,5 @@
 import 'package:eventify/utils/AppAssets.dart';
+import 'package:eventify/utils/AppRouts.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-  Future.delayed(Duration(seconds: 3),(){});
+  Future.delayed(Duration(seconds: 3),(){Navigator.pushNamed(context, AppRouts.routeNamedOnBoarding1Screen);});
   }
   @override
   Widget build(BuildContext context) {
