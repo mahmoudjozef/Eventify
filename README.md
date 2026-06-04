@@ -33,7 +33,7 @@ One of the most interesting challenges during development was implementing custo
 Initially, I experimented with the `reorderables` package, but it introduced several issues and didn't provide the desired behavior. After researching alternative approaches, I switched to Flutter's built-in reordering solution, which resulted in a more stable and reliable user experience.
 
 🎨 UI Design
-![Uploading Screenshot (229).png…]()
+<img width="3840" height="2160" alt="Screenshot (229)" src="https://github.com/user-attachments/assets/2839efd5-8df7-43d5-8a96-8fbff5c906c2" />
 
 ## 📂 Project Structure
 
