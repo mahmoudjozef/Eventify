@@ -3,7 +3,7 @@ import 'package:eventify/Screens/Widgets/ElevetedBottom.dart';
 import 'package:eventify/Screens/Widgets/TextFieldCustom.dart';
 import 'package:eventify/Screens/home/pages/AddEvent/widget/DateWidget.dart';
 import 'package:eventify/Screens/home/pages/AddEvent/widget/TimeWidget.dart';
-import 'package:eventify/Screens/home/pages/homePage/widget/ChipsWidget.dart';
+import 'package:eventify/Screens/home/pages/homePage/widget/ChipsUi.dart';
 import 'package:eventify/l10n/app_localizations.dart';
 import 'package:eventify/model/EventModel.dart';
 import 'package:eventify/providers/theme_provider.dart';
@@ -85,14 +85,24 @@ class _AddEventScreenState extends State<AddEventScreen> {
                       ? eventsImagesLight[selectedIndex]
                       : eventsImagesDark[selectedIndex],
                 ),
-                ChipsWidget(
-                  eventName: evetsName,
-                  onTap: (index) {
-                    selectedIndex = index;
-                    setState(() {});
-                  },
-                  selectedIndex: selectedIndex,
+                SizedBox(
+                  height: 50,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return ChipUi(
+                        eventName: evetsName[index],
+                        isSelected: selectedIndex == index,
+                        onTap: () {
+                          selectedIndex = index;
+                          setState(() {});
+                        },
+                      );
+                    },
+                    itemCount: evetsName.length,
+                  ),
                 ),
+
                 Text('Title', style: Theme.of(context).textTheme.titleSmall),
                 TextFieldCustom(
                   hintText: 'Title',
@@ -155,7 +165,6 @@ class _AddEventScreenState extends State<AddEventScreen> {
       });
     }
   }
-
   void chooseTime() async {
     var time = await showTimePicker(
       context: context,
@@ -168,7 +177,6 @@ class _AddEventScreenState extends State<AddEventScreen> {
       });
     }
   }
-
   void addEvent(ThemeProvider themeProvider) {
     eventImage=eventsImagesLight[selectedIndex];
     eventImageDark=eventsImagesDark[selectedIndex];

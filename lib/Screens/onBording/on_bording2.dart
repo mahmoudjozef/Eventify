@@ -4,6 +4,7 @@ import 'package:eventify/providers/theme_provider.dart';
 import 'package:eventify/utils/AppAssets.dart';
 import 'package:eventify/utils/AppRouts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 
 class OnBoarding2 extends StatelessWidget {
@@ -12,40 +13,32 @@ class OnBoarding2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var themeProvider = Provider.of<ThemeProvider>(context);
-    return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: themeProvider.isLightMode()?Colors.black:Colors.white),
-        title: Image.asset(
-          themeProvider.isLightMode()
-              ? AppAssets.evntlylight
-              : AppAssets.evntlyDark,
-        ),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            Center(
-              child: Image.asset(
-                themeProvider.isLightMode()
-                    ? AppAssets.onboardingLight2
-                    : AppAssets.onboardingDark2,
-              ),
+    return  Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        children: [
+          Center(
+            child: Image.asset(
+              themeProvider.isLightMode()
+                  ? AppAssets.onboardingLight2
+                  : AppAssets.onboardingDark2,
             ),
-            SizedBox(height: 20,),
-            Text(AppLocalizations.of(context)!.titleOnBoarding2,style: Theme.of(context).textTheme.titleMedium,),
-            SizedBox(height: 10,),
-            Text(AppLocalizations.of(context)!.descriptionOnBoarding2,style: Theme.of(context).textTheme.titleSmall,),
-            SizedBox(height: 15,),
-            ElevatedButtonCustom(
-              text: AppLocalizations.of(context)!.next,
-              onPressed: (){
-              Navigator.pushNamed(context, AppRouts.routeNamedOnBoarding3Screen);
-            },)
+          ).animate().scaleX(),
 
-          ],
-        ),
+          const SizedBox(height: 20),
+
+          Text(
+            AppLocalizations.of(context)!.titleOnBoarding2,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+
+          const SizedBox(height: 10),
+
+          Text(
+            AppLocalizations.of(context)!.descriptionOnBoarding2,
+            style: Theme.of(context).textTheme.titleSmall,
+          ),
+        ],
       ),
     );
   }

@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-  Future.delayed(Duration(seconds: 3),(){Navigator.pushNamed(context, AppRouts.routeNamedOnBoarding1Screen);});
+      Future.delayed(Duration(seconds: 3),(){Navigator.pushNamed(context, AppRouts.routeNamedOnBoardingScreen);});
   }
   @override
   Widget build(BuildContext context) {

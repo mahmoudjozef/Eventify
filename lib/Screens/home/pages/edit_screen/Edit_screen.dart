@@ -3,7 +3,7 @@ import 'package:eventify/Screens/Widgets/ElevetedBottom.dart';
 import 'package:eventify/Screens/Widgets/TextFieldCustom.dart';
 import 'package:eventify/Screens/home/pages/AddEvent/widget/DateWidget.dart';
 import 'package:eventify/Screens/home/pages/AddEvent/widget/TimeWidget.dart';
-import 'package:eventify/Screens/home/pages/homePage/widget/ChipsWidget.dart';
+import 'package:eventify/Screens/home/pages/homePage/widget/ChipsUi.dart';
 import 'package:eventify/l10n/app_localizations.dart';
 import 'package:eventify/model/EventModel.dart';
 import 'package:eventify/providers/theme_provider.dart';
@@ -38,6 +38,7 @@ class _EditScreenState extends State<EditScreen> {
     AppAssets.bookClubDark,
     AppAssets.exhibitionDark,
   ];
+
   //Date
   DateTime? dateTime;
   String? formatDate;
@@ -52,29 +53,29 @@ class _EditScreenState extends State<EditScreen> {
   String eventImage = '';
   String eventImageDark = '';
   String selectedEventName = '';
-
+  bool isInit = true;
   late EventModel args;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    eventName = [
-      AppLocalizations.of(context)!.sport,
-      AppLocalizations.of(context)!.birthday,
-      AppLocalizations.of(context)!.meeting,
-      AppLocalizations.of(context)!.bookClub,
-      AppLocalizations.of(context)!.exhibition,
-    ];
+    if (isInit) {
+      args = ModalRoute.of(context)!.settings.arguments as EventModel;
 
-    args = ModalRoute.of(context)!.settings.arguments as EventModel;
+      eventName = [
+        AppLocalizations.of(context)!.sport,
+        AppLocalizations.of(context)!.birthday,
+        AppLocalizations.of(context)!.meeting,
+        AppLocalizations.of(context)!.bookClub,
+        AppLocalizations.of(context)!.exhibition,
+      ];
 
-    if (selectedIndex == 0) {
       selectedIndex = eventName.indexOf(args.eventName);
+
+      isInit = false;
     }
-
     var theme = Provider.of<ThemeProvider>(context);
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -105,19 +106,27 @@ class _EditScreenState extends State<EditScreen> {
 
               children: [
                 Image.asset(
-                  theme.isLightMode() ? args.eventImage : args.eventImageDark,
+                  theme.isLightMode()
+                      ? eventsImagesLight[selectedIndex]
+                      : eventsImagesDark[selectedIndex],
                 ),
 
-                ChipsWidget(
-                  eventName: eventName,
-
-                  selectedIndex: selectedIndex,
-
-                  onTap: (index) {
-                    selectedIndex = index;
-
-                    setState(() {});
-                  },
+                SizedBox(
+                  height: 50,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return ChipUi(
+                        eventName: eventName[index],
+                        isSelected: selectedIndex == index,
+                        onTap: () {
+                          selectedIndex = index;
+                          setState(() {});
+                        },
+                      );
+                    },
+                    itemCount: eventName.length,
+                  ),
                 ),
 
                 Text('Title', style: Theme.of(context).textTheme.titleSmall),
@@ -207,6 +216,7 @@ class _EditScreenState extends State<EditScreen> {
       });
     }
   }
+
   void chooseTime() async {
     var time = await showTimePicker(
       context: context,
@@ -231,7 +241,6 @@ class _EditScreenState extends State<EditScreen> {
 
       var event = EventModel(
         id: args.id,
-
         eventImage: eventImage,
         eventImageDark: eventImageDark,
 

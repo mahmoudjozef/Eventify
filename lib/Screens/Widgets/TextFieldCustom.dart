@@ -7,27 +7,37 @@ class TextFieldCustom extends StatelessWidget {
   TextFieldCustom({
     super.key,
     this.prefixIcon,
+    this.obscureText,
     this.suffix,
     this.maxLine,
     this.validator,
     this.onChanged,
+    this.controller,
     required this.hintText,
   });
 
   IconData? prefixIcon;
   IconData? suffix;
   String hintText;
+  TextEditingController? controller;
+  bool? obscureText;
   int? maxLine;
   String? Function(String?)? validator;
   String? Function(String?)? onChanged;
-
 
   @override
   Widget build(BuildContext context) {
     var themeProvider = Provider.of<ThemeProvider>(context);
     return TextFormField(
-      onChanged:onChanged ,
+      style: TextStyle(
+        color: themeProvider.isLightMode()
+            ? AppColor.blackColor
+            : AppColor.whiteColor,
+      ),
+      onChanged: onChanged,
+      controller: controller,
       validator: validator,
+      obscureText: obscureText ?? false,
       maxLines: maxLine,
       decoration: InputDecoration(
         filled: true,

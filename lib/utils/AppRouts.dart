@@ -1,9 +1,11 @@
 class AppRouts {
   static const String routeNamedSplashScreen = 'SplashScreen';
-  static const String routeNamedOnBoarding1Screen = 'Onboarding1';
-  static const String routeNamedOnBoarding2Screen = 'OnBoarding2';
-  static const String routeNamedOnBoarding3Screen = 'OnBoarding3';
-  static const String routeNamedOnBoarding4Screen = 'OnBoarding4';
+  static const String routeNamedMotionScreen = 'MotionScreen';
+  static const String routeNamedOnBoardingScreen = 'Onboarding';
+  // static const String routeNamedOnBoarding2Screen = 'OnBoarding2';
+  // static const String routeNamedOnBoarding3Screen = 'OnBoarding3';
+  // static const String routeNamedOnBoarding4Screen = 'OnBoarding4';
+  static const String routeNamedProfileScreen = 'OnBoarding4';
 
   static const String routeNamedHomeScreen = 'HomeScreen';
   static const String routeNamedLoginScreen = 'LoginScreen';

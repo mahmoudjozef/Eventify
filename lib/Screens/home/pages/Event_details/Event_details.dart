@@ -58,7 +58,7 @@ class EventDetails extends StatelessWidget {
           spacing: 10,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(args.eventImage),
+            Image.asset(themeProvider.isLightMode()?args.eventImage:args.eventImageDark),
             Text(
               args.eventTitle,
               style: Theme.of(context).textTheme.titleMedium,

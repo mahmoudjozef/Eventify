@@ -1,10 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:eventify/Screens/Auth/Forget%20password/forget_screen.dart';
 import 'package:eventify/Screens/Auth/Login/login_screen.dart';
+import 'package:eventify/Screens/Auth/register/MotionScreen.dart';
 import 'package:eventify/Screens/Auth/register/Register_Screen.dart';
 import 'package:eventify/Screens/home/pages/AddEvent/AddEventScreen.dart';
 import 'package:eventify/Screens/home/pages/Event_details/Event_details.dart';
 import 'package:eventify/Screens/home/pages/edit_screen/Edit_screen.dart';
+import 'package:eventify/Screens/onBording/Onboarding_Screen.dart';
 import 'package:eventify/Screens/onBording/on_Boarding4.dart';
 import 'package:eventify/Screens/onBording/on_boarding3.dart';
 import 'package:eventify/Screens/onBording/on_bording1.dart';
@@ -57,13 +59,11 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightMode,
       darkTheme: AppTheme.darkMode,
       themeMode: themeProvider.appTheme,
-      initialRoute: AppRouts.routeNamedLoginScreen,
+      initialRoute: AppRouts.routeNamedSplashScreen,
       routes: {
         AppRouts.routeNamedSplashScreen: (context) => SplashScreen(),
-        AppRouts.routeNamedOnBoarding1Screen: (context) => Onboarding1(),
-        AppRouts.routeNamedOnBoarding2Screen: (context) => OnBoarding2(),
-        AppRouts.routeNamedOnBoarding3Screen: (context) => OnBoarding3(),
-        AppRouts.routeNamedOnBoarding4Screen: (context) => OnBoarding4(),
+        AppRouts.routeNamedMotionScreen: (context) => MotionScreen(),
+        AppRouts.routeNamedOnBoardingScreen: (context) => OnboardingScreen(),
         AppRouts.routeNamedLoginScreen: (context) => LoginScreen(),
         AppRouts.routeNamedRegisterScreen: (context) => RegisterScreen(),
         AppRouts.routeNamedForgetScreen: (context) => ForgetScreen(),
